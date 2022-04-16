@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/filippo/Documents/Uni/Projects/Mindfield/source/main.cpp
+iostream
+-
+config.hpp
+-
+
+config.hpp
+

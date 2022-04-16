@@ -1,0 +1,4 @@
+/home/filippo/Documents/Uni/Projects/Mindfield/build/CMakeFiles/rebuild_cache.dir
+/home/filippo/Documents/Uni/Projects/Mindfield/build/CMakeFiles/edit_cache.dir
+/home/filippo/Documents/Uni/Projects/Mindfield/build/CMakeFiles/Doxygen.dir
+/home/filippo/Documents/Uni/Projects/Mindfield/build/CMakeFiles/Mindfield.dir
