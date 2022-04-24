@@ -1,9 +1,17 @@
 cmake_minimum_required(VERSION 3.10)
-project(MINDFIELD VERSION 0.1)
+project(MINDFIELD LANGUAGES CUDA CXX VERSION 0.1)
 
 # Standard di C++ usato
-set(CMAKE_CXX_STANDARD_REQUIRED True)
-set(CMAKE_CXX_STANDARD 17)
+if(NOT DEFINED CMAKE_CXX_STANDARD)
+    set(CMAKE_CXX_STANDARD_REQUIRED True)
+    set(CMAKE_CXX_STANDARD 17)
+endif()
+
+# Standardi di CUDA usato
+if(NOT DEFINED CMAKE_CUDA_STANDARD)
+    set(CMAKE_CUDA_STANDARD_REQUIRED True)
+    set(CMAKE_CUDA_STANDARD 11)
+endif()
 
 # =====================================================================
 # Eseguibile - Mindfield
@@ -14,11 +22,14 @@ set(MINDFIELD_CONFIG_OUT "${PROJECT_BINARY_DIR}/config.hpp")
 # Genera header di configurazione
 configure_file(${MINDFIELD_CONFIG_IN} ${MINDFIELD_CONFIG_OUT} @ONLY)
 
-add_executable(Mindfield source/main.cpp)
+add_executable(Mindfield source/main.cu)
 target_include_directories(Mindfield PUBLIC
     "${PROJECT_BINARY_DIR}"
     "${PROJECT_SOURCE_DIR}/include"
+    "${PROJECT_SOURCE_DIR}/extern"
 )
+
+target_compile_options(Mindfield PRIVATE $<$<COMPILE_LANGUAGE:CUDA>:-gencode arch=compute_35,code=sm_35>)
 
 # =====================================================================
 # Doxygen
